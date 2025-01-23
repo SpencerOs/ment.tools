@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!typedElement) return;
   
     const phrases = [
-      "Run large language models locally.",
-      "Your data, your power.",
-      "Offline. Private. Customizable."
+      "run large language models locally",
+      "your data, your power",
+      "offline; private; customizable;"
     ];
     let currentPhraseIndex = 0;
     let currentCharIndex = 0;
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentPhrase = phrases[currentPhraseIndex];
       if (!isDeleting) {
         // Typing forward
-        typedElement.textContent = currentPhrase.slice(0, currentCharIndex + 1);
+        typedElement.textContent = "> " + currentPhrase.slice(0, currentCharIndex + 1);
         currentCharIndex++;
         if (currentCharIndex === currentPhrase.length) {
           // Pause then start deleting
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } else {
         // Deleting backward
-        typedElement.textContent = currentPhrase.slice(0, currentCharIndex - 1);
+        typedElement.textContent = "> " + currentPhrase.slice(0, currentCharIndex - 1);
         currentCharIndex--;
         if (currentCharIndex === 0) {
           isDeleting = false;
