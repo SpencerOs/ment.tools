@@ -1,0 +1,22 @@
+title: "Ment"
+description: "Local LLMs for Apple devices"
+# Adjust these as needed:
+baseurl: "" # If you're hosting at a subpath, set it here. Otherwise leave empty.
+url: "https://your-custom-domain.com"
+# If you want GitHub Pages to build with Jekyll:
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Where Jekyll will look for your posts (used by news.html)
+collections:
+  posts:
+    output: true
+
+theme: null
+
+# Optional: Exclude or include certain files
+exclude:
+  - "node_modules"
+  - "README.md"
+  - ".gitignore"
