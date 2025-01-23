@@ -1,8 +1,8 @@
 title: "ment"
 description: "local llms on apple devices"
 # Adjust these as needed:
-url: "https://spenceros.github.io"
-baseurl: "/ment.tools"
+url: "https://ment.tools"
+baseurl: ""
 # If you want GitHub Pages to build with Jekyll:
 plugins:
   - jekyll-feed
