@@ -4,6 +4,12 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
   
   /* Body / Global Styles */
   body {
@@ -11,6 +17,8 @@
     color: #eee;
     font-family: "Source Code Pro", monospace;
     line-height: 1.5;
+    display: flex;
+    flex-direction: column;
   }
   
   /* Links / Buttons */
@@ -38,9 +46,11 @@
   
   /* Main Content Wrapper */
   .main-content {
+    flex: 1;
     max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
   }
   
   /* Footer */
