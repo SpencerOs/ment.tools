@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Example of including Jekyll SEO Tag plugin -->
-  {% seo %}
-  <link href="/css/style.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Example of including Jekyll SEO Tag plugin -->
+    {% seo %}
+    <link href="{{ '/css/style.css' | relative_url }}" rel="stylesheet" />
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/features.html' | relative_url }}">Features</a>
-      <a href="{{ '/news.html' | relative_url }}">News</a>
-      <a href="{{ '/about.html' | relative_url }}">About</a>
-    </div>
-  </nav>
+    <nav class="nav">
+        <div class="nav-inner">
+        <a href="{{ '/index.html' | relative_url }}">Home</a>
+        <a href="{{ '/features.html' | relative_url }}">Features</a>
+        <a href="{{ '/news.html' | relative_url }}">News</a>
+        <a href="{{ '/about.html' | relative_url }}">About</a>
+        </div>
+    </nav>
 
-  <main class="main-content">
-    {{ content }}
-  </main>
+    <main class="main-content">
+        {{ content }}
+    </main>
 
-  <footer class="footer">
-    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
-  </footer>
+    <footer class="footer">
+        <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+    </footer>
 
-  <script src="/js/main.js"></script>
+    <script src="{{ '/js/main.js' | relative_url }}"></script>
 </body>
 </html>

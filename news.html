@@ -1,21 +1,21 @@
 ---
 layout: default
-title: "News"
+title: "news"
 ---
 
 <div class="container">
-  <h1>Ment News & Updates</h1>
+  <h1>ment news & updates</h1>
   <p>Follow our development progress, feature releases, and announcements here.</p>
 
   {% if site.posts == empty %}
-    <p><em>No posts yet. Stay tuned!</em></p>
+    <p><em>no posts yet. stay tuned!</em></p>
   {% else %}
     {% for post in site.posts %}
       <article>
         <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
         <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
         <p>{{ post.excerpt }}</p>
-        <p><a href="{{ post.url }}">Read more</a></p>
+        <p><a href="{{ post.url }}">read more</a></p>
       </article>
     {% endfor %}
   {% endif %}
