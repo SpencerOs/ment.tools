@@ -31,6 +31,7 @@
         size: Math.random() * 1.5 + 0.5,
         maxBrightness: Math.random() * 0.8 + 0.2,
         brightness: 0, // start invisible
+        brightStep: 0.01,
         phase: 'fadein', // fadein -> twinkle -> sucked
         twinkleTimer: 0,
         twinkleMax: Math.floor(Math.random() * 200 + 100),
@@ -82,18 +83,29 @@
   
         // State machine for star brightness
         if (s.phase === 'fadein') {
-          s.brightness += 0.01;
+          s.brightness += s.brightStep;
           if (s.brightness >= s.maxBrightness) {
             s.brightness = s.maxBrightness;
             s.phase = 'twinkle';
+
+            const min = 0.001;
+            const max = 0.01;
+            const randomValue = Math.random() * (max - min) + min;
+            s.brightStep = -1 * randomValue;
           }
         } else if (s.phase === 'twinkle') {
           s.twinkleTimer++;
+          s.brightness += s.brightStep;
           if (s.twinkleTimer > s.twinkleMax && starsInFlight < MAX_STARS_SUCKING) {
             // trigger the "sucked in" flight
             s.phase = 'sucked';
             s.speed = 2 + Math.random() * 3; // how fast it moves inward
             starsInFlight++;
+          }
+          if (s.brightness >= s.maxBrightness) {
+            s.brightStep = -1 * s.brightStep;
+          } else if (s.brightness <= s.maxBrightness/2) {
+            s.brightStep = -1 * s.brightStep;
           }
         } else if (s.phase === 'sucked') {
           if (s.swirlAngle === undefined) {
@@ -111,12 +123,18 @@
           s.y += Math.sin(angle) * s.speed;
           // if close, remove & spawn new star
           const dist = Math.hypot(bhX - s.x, bhY - s.y);
-          if (dist < 20) {
+          if (s.brightness >= s.maxBrightness) {
+            s.brightStep = -1 * s.brightStep;
+          } else if (s.brightness <= s.maxBrightness/2) {
+            s.brightStep = -1 * s.brightStep;
+          }
+          if (dist < 40) {
             // star is "consumed"
             s.phase = 'fadein';
             s.x = Math.random() * cw;
             s.y = Math.random() * (ch * 0.4);
             s.brightness = 0;
+            s.brightStep = 0.01;
             s.twinkleTimer = 0;
             s.twinkleMax = Math.floor(Math.random() * 200 + 100);
             starsInFlight--;
