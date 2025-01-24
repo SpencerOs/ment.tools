@@ -4,19 +4,21 @@ title: "news"
 ---
 
 <div class="container">
-  <h1>ment news & updates</h1>
-  <p>Follow our development progress, feature releases, and announcements here.</p>
+  <section class="hero" style="margin: 2rem 0;">
+    <h1>ment news & updates</h1>
+    <p>follow our development progress, feature releases, and announcements here</p>
 
-  {% if site.posts == empty %}
-    <p><em>no posts yet. stay tuned!</em></p>
-  {% else %}
-    {% for post in site.posts %}
-      <article>
-        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
-        <p>{{ post.excerpt }}</p>
-        <p><a href="{{ post.url }}">read more</a></p>
-      </article>
-    {% endfor %}
-  {% endif %}
+    {% if site.posts == empty %}
+      <p><em>no posts yet. stay tuned!</em></p>
+    {% else %}
+      {% for post in site.posts %}
+        <article>
+          <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+          <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
+          <p>{{ post.excerpt }}</p>
+          <p><a href="{{ post.url }}">read more</a></p>
+        </article>
+      {% endfor %}
+    {% endif %}
+  </section>
 </div>

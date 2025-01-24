@@ -223,3 +223,24 @@
         font-size: 1.2rem;
     }
   }
+
+  #bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  #black-hole {
+    position: absolute;
+    z-index: 1;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 200px;
+    opacity: 0.95;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+  }

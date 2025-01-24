@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Hello World"
-date: 2025-01-23 10:00:00 -0800
+title: "hello world"
+date: 2025-01-31 10:00:00 -0800
 ---
 
-We are excited to announce our first alpha version of Ment... coming soon
+we are excited to announce our first alpha version of ment... coming soon
