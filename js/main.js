@@ -40,3 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
   
     type();
   });
+
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navInner = document.querySelector('.nav-inner');
+
+  menuToggle.addEventListener('click', () => {
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+    menuToggle.setAttribute('aria-expanded', !expanded);
+    navInner.classList.toggle('nav-open');
+    menuToggle.classList.toggle('open');
+  })
