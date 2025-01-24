@@ -2,7 +2,3 @@ _site/*
 .DS_Store
 Gemfile
 Gemfile.lock
-
-For the background of the site, how likely could we recreate something like this? 
-For the big hole in the middle, that should be the logo.svg.
-The big field of lines should be programattically made with 
