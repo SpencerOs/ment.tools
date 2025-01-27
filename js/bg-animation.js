@@ -53,9 +53,10 @@
     // 5) Grid Setup
     //--------------------------------------------------
     const LINE_COUNT_HORIZONTAL = 20;
-    const LINE_COUNT_VERTICAL   = 21;
+    const LINE_COUNT_VERTICAL   = 31;
     const horizonFrac = 0.4;  // 40% down from top
     const GRID_SPEED  = 0.0007;  // speed for horizontal lines
+    const singularityRadius = 70;
   
     // Horizontal lines: store an array of { param }
     let horizontalLines = [];
@@ -64,15 +65,30 @@
     }
   
     // Vertical lines: store angles (–90°..+90°) distributed with a gentle ease
-    let verticalAngles = [];
-    for (let i = 0; i < LINE_COUNT_VERTICAL; i++) {
-      const t = i / (LINE_COUNT_VERTICAL - 1); 
-      // Easing: 0 -> 1 with a "cosine" for symmetrical distribution
-      let s = 0.5 * (1 - Math.cos(Math.PI * t));
-      s = Math.pow(s, 3);
-      // Maps s=0 => angle=-90°, s=1 => angle=+90°
-      const angle = -Math.PI/2 + Math.PI * s;
-      verticalAngles.push(angle);
+    let verticalAngles = buildPiecewiseAngles(LINE_COUNT_VERTICAL, 10);
+
+    function buildPiecewiseAngles(count, exponent) {
+      let angles = [];
+
+      let half = (count - 1) /2;
+      for (let i = 0; i < Math.floor(half); i++) {
+        const t = i / half;
+        let s = Math.pow(t, exponent);
+        let angle = -Math.PI/2 + (Math.PI/2) * s;
+        angles.push(angle);
+      }
+
+      if (count % 2) {
+        angles.push(0);
+      }
+
+      for (let i = Math.floor(half) + 1; i < count; i++) {
+        let mirrorIndex = count - 1 - i;
+        let leftAngle = angles[mirrorIndex];
+        angles.push(-leftAngle);
+      }
+
+      return angles
     }
   
     //--------------------------------------------------
@@ -82,14 +98,28 @@
     const MAX_STARS_SUCKING = 20; 
     let stars = [];
     let starsInFlight = 0; // how many are currently being sucked in
-  
+
     function createStar() {
-        const min = 0.001;
-        const max = 0.01;
-        const randomBrightStep = Math.random() * (max - min) + min;
+      let x, y, dist;
+      let attempts = 0;
+
+      do {
+        x = Math.random() * cw;
+        y = Math.random() * (ch * horizonFrac);
+        const dx = x - cw/2;
+        const dy = y - ch * horizonFrac;
+        dist = Math.sqrt(dx*dx + dy*dy);
+
+        attempts++;
+        if (attempts > 999) break;
+      } while (dist < singularityRadius);
+
+      const min = 0.001;
+      const max = 0.01;
+      const randomBrightStep = Math.random() * (max-min) + min;
+
       return {
-        x: Math.random() * cw,
-        y: Math.random() * (ch * horizonFrac), // only in top 40%
+        x, y,
         size: Math.random() * 1.5 + 0.5,
         maxBrightness: Math.random() * 0.8 + 0.2,
         brightness: 0, 
@@ -217,15 +247,10 @@
   
             // if close enough, reset
             const dist = Math.hypot((bhX + swirlX) - st.x, (bhY + swirlY) - st.y);
-            if (dist < 70) {
+            if (dist < singularityRadius) {
               // star consumed
-              st.phase = 'fadein';
-              st.x = Math.random() * cw;
-              st.y = Math.random() * (ch * horizonFrac);
-              st.brightness = 0;
-              st.brightStep = 0.01;
-              st.twinkleTimer = 0;
-              st.twinkleMax = Math.floor(Math.random() * 200 + 100);
+              const newStar = createStar();
+              Object.assign(st, newStar);
               starsInFlight--;
             }
             break;
