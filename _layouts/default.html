@@ -9,6 +9,7 @@
     <link href="{{ '/css/style.css' | relative_url }}" rel="stylesheet" />
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <canvas id="grid-canvas"></canvas>
     <img id="singularity" src="{{ '/images/logo.svg' | relative_url }}" alt="Singularity" />
     <canvas id="stars-canvas"></canvas>
@@ -26,7 +27,7 @@
         </div>
     </nav>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
         {{ content }}
     </main>
 
