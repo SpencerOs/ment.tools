@@ -5,6 +5,10 @@
     box-sizing: border-box;
   }
 
+  :root {
+    --panel-bg: #151515;
+  }
+
   html, body {
     margin: 0;
     padding: 0;
@@ -159,8 +163,8 @@
     margin-bottom: 0.5rem;
   }
 
-  .hero, .highlights, .cta {
-    background: #151515;
+  .hero, .highlights, .cta, .panel {
+    background: var(--panel-bg);
     margin-bottom: 2rem;
     padding: 1.5rem;
     border-radius: 8px;
@@ -243,7 +247,7 @@
         text-align: center;
     }
 
-    .hero, .highlights, .cta {
+    .hero, .highlights, .cta, .panel {
         padding: 1rem;
         margin-bottom: 1rem;
     }
