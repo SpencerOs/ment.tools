@@ -54,7 +54,7 @@
   
   /* Links / Buttons */
   a {
-    color: #ff5e8e;
+    color: #d81b5f;
     text-decoration: none;
     transition: color 0.2s ease;
   }
@@ -101,7 +101,7 @@
     font-weight: 500;
   }
   .nav .nav-inner a:hover {
-    color: #ff5e8e;
+    color: #d81b5f;
   }
   
   /* Main Content Wrapper */
@@ -125,7 +125,7 @@
   
   /* Headings */
   h1, h2, h3, h4 {
-    color: #ff5e8e; /* accent color for headings */
+    color: #d81b5f; /* accent color for headings */
     margin-bottom: 0.5rem;
     font-family: inherit;
     font-weight: 600;
@@ -144,7 +144,7 @@
     font-weight: 600;
     white-space: nowrap;
     width: fit-content;
-    border-right: 1px solid #ff5e8e; /* caret look */
+    border-right: 1px solid #d81b5f; /* caret look */
     padding-right: 0.2em;
   }
   
