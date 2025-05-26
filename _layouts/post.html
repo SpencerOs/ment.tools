@@ -2,14 +2,16 @@
 layout: default
 ---
 
-<article class="container" style="margin: 2rem 0;">
-  <h1>{{ page.title }}</h1>
-  {% if page.git_author or page.git_date %}
-  <p class="date">
-    {% if page.git_author %}by {{ page.git_author }}{% endif %}
-    {% if page.git_date %}{% if page.git_author %} on {% endif %}{{ page.git_date | date: "%B %d, %Y" }}{% endif %}
-  </p>
-  {% endif %}
+<div class="container">
+  <section class="panel">
+    <h1>{{ page.title }}</h1>
+    {% if page.git_author or page.git_date %}
+    <p class="date">
+      {% if page.git_author %}by {{ page.git_author }}{% endif %}
+      {% if page.git_date %}{% if page.git_author %} on {% endif %}{{ page.git_date | date: "%B %d, %Y" }}{% endif %}
+    </p>
+    {% endif %}
 
-  {{ content }}
-</article>
+    {{ content }}
+  </section>
+</div>
