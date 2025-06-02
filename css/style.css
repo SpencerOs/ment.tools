@@ -292,3 +292,12 @@
     mask-size: 100% 100%;
     mask-repeat: no-repeat;
   }
+
+  @keyframes flash {
+    0%, 100% {
+      color: inherit;
+    }
+    50% {
+      color: white;
+    }
+  }
