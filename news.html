@@ -5,21 +5,30 @@ title: "news"
 
 <div class="container">
   <section class="panel">
-    <h1>ment news & updates</h1>
+    <h1>ment news &amp; updates</h1>
     <p>follow our development progress, feature releases, and announcements here</p>
+    <br />
 
     {% if site.posts == empty %}
       <p><em>no posts yet. stay tuned!</em></p>
     {% else %}
       {% for post in site.posts %}
-        <article>
-          <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-          <p class="date">
-            {% if post.git_author %}{{ post.git_author }} - {% endif %}
-            {% if post.git_date %}{{ post.git_date | date: "%B %d, %Y" }}{% else %}{{ post.date | date: "%B %d, %Y" }}{% endif %}
-          </p>
-          <p>{{ post.excerpt }}</p>
-          <p><a href="{{ post.url }}">read more</a></p>
+        <article class="post-card">
+          <a href="{{ post.url }}" class="post-link">
+            <h2>{{ post.title }}</h2>
+
+            <p class="date">
+              {% if post.git_author %}{{ post.git_author }} - {% endif %}
+              {% if post.git_date %}
+                {{ post.git_date | date: "%B %d, %Y" }}
+              {% else %}
+                {{ post.date | date: "%B %d, %Y" }}
+              {% endif %}
+            </p>
+
+            <p>{{ post.excerpt }}</p>
+            <p class="read-more">read more</p>
+          </a>
         </article>
       {% endfor %}
     {% endif %}

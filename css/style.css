@@ -131,6 +131,10 @@
     font-weight: 600;
   }
   
+  h1, h2 {
+    padding-top: 2rem;
+  }
+  
   /* Utility Classes */
   .container {
     max-width: 800px;
@@ -199,6 +203,44 @@
   }
   .menu-toggle.open .hamburger::after {
     transform: translateY(-2px) rotate(-45deg);
+  }
+
+  /* dark-friendly card */
+  .panel .post-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.5rem;
+    backdrop-filter: saturate(180%) blur(6px);
+    margin-bottom: 2rem;                 /* space between cards */
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  /* ONE anchor that fills the whole card */
+  .panel .post-link {
+    display: block;                      /* fills the <article> */
+    padding: 1rem 1.25rem;
+    color: inherit;                      /* inherit base colour */
+    text-decoration: none;               /* no underlines until hover */
+    cursor: pointer;                     /* hand cursor everywhere */
+  }
+
+  /* hover / focus state – entire card lights up together */
+  .panel .post-card:hover,
+  .panel .post-card:focus-within {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+  }
+  .panel .post-card:hover .post-link,
+  .panel .post-card:focus-within .post-link {
+    color: #d81b5f;                      /* pick an accent that fits your palette */
+  }
+
+  .panel .post-card h2 {
+    padding-top: 0;
+  }
+
+  section h1, h2 {
+    padding-top: 0;
   }
 
   .video-demo {
@@ -291,4 +333,13 @@
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 47%, rgba(0,0,0,0) 55%);
     mask-size: 100% 100%;
     mask-repeat: no-repeat;
+  }
+
+  @keyframes flash {
+    0%, 100% {
+      color: inherit;
+    }
+    50% {
+      color: white;
+    }
   }
