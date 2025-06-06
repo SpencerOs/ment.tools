@@ -66,4 +66,4 @@ While the exact release roadmap is always subject to change, the outline for wha
 <br />
 ## That's all Folks!
 In conclusion, ment is free, the base product is going to stay free, and I hope anyone reading this with an M-series Mac gives it a shot!  
-If it's great, but you still have product suggestions, <a href="https://x.com/ment_tools" target="blank">reach out</a>! The goal is to make the most efficient compute possible in the most user-friendly package there is.
+If it's great, but you still have product suggestions, <a href="/about.html" target="blank">reach out</a>! The goal is to make the most efficient compute possible in the most user-friendly package there is.

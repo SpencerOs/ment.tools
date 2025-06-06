@@ -238,6 +238,11 @@
   .panel .post-card h2 {
     padding-top: 0;
   }
+
+  section h1, h2 {
+    padding-top: 0;
+  }
+
   .video-demo {
     margin: 2rem 0;
     text-align: center;
