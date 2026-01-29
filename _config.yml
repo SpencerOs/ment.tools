@@ -16,6 +16,8 @@ collections:
 theme: null
 
 # Optional: Exclude or include certain files
+include:
+  - ".well-known"
 exclude:
   - "node_modules"
   - "README.md"
