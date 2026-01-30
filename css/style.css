@@ -63,6 +63,11 @@
     text-decoration: underline;
   }
 
+  .link-coming-soon {
+    color: #d81b5f;
+    text-decoration: line-through;
+  }
+
   a:focus {
     outline: 2px solid #fff;
     outline-offset: 2px;
